@@ -1,17 +1,17 @@
-import * as dotenv from "dotenv"
+import express from "express"
+import cors from "cors"
+import dotenv from "dotenv"
+
 dotenv.config()
-
-import express = require("express")
-import cors = require("cors")
-
-import optionRoutes from "./routes/option.routes"
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-app.use("/api/option", optionRoutes)
+app.get("/", (_, res) => {
+  res.send("Capital Cortex Backend Running")
+})
 
 const PORT = process.env.PORT || 4000
 
