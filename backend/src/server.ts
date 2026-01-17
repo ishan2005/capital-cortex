@@ -1,23 +1,28 @@
-import express from "express"
-import cors from "cors"
-import dotenv from "dotenv"
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-import optionRoutes from "./routes/option.routes"
+import optionRoutes from "./routes/option.routes";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
+
+/* ---------- MIDDLEWARE ---------- */
+app.use(cors());
+app.use(express.json());
+
+/* ---------- ROOT TEST ---------- */
 app.get("/", (req, res) => {
-  res.send("Capital Cortex Backend is running 🚀");
+  res.send("Backend is running");
 });
 
-app.use(cors())
-app.use(express.json())
+/* ---------- API ROUTES ---------- */
+app.use("/api/option", optionRoutes);
 
-app.use("/api/option", optionRoutes)
+/* ---------- PORT (CRITICAL) ---------- */
+const PORT = Number(process.env.PORT) || 4000;
 
-const PORT = process.env.PORT || 4000
-
-app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`)
-})
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Backend running on port ${PORT}`);
+});
