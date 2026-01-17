@@ -1,9 +1,8 @@
-import dotenv from "dotenv"
+import * as dotenv from "dotenv"
 dotenv.config()
 
-import express from "express"
-import cors from "cors"
-
+import express = require("express")
+import cors = require("cors")
 
 import optionRoutes from "./routes/option.routes"
 
@@ -16,8 +15,6 @@ app.use("/api/option", optionRoutes)
 
 const PORT = process.env.PORT || 4000
 
-
 app.listen(PORT, () => {
-
-  console.log(`Backend running on http://localhost:${PORT}`)
+  console.log(`Backend running on port ${PORT}`)
 })

@@ -1,19 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-"main": "dist/server.js",
-
-  
+  "description": "Capital Cortex backend service",
+  "main": "dist/server.js",
+  "type": "commonjs",
   "scripts": {
-  "start": "node dist/server.js"
-}
-
-,
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
