@@ -7,6 +7,9 @@ import optionRoutes from "./routes/option.routes"
 dotenv.config()
 
 const app = express()
+app.get("/", (req, res) => {
+  res.send("Capital Cortex Backend is running 🚀");
+});
 
 app.use(cors())
 app.use(express.json())
