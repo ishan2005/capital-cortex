@@ -8,7 +8,7 @@ export interface OptionAnalysis {
   vega: number
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000"
+const API_URL = import.meta.env.VITE_API_URL || "https://capital-cortex-production.up.railway.app"
 
 
 export async function fetchOptionAnalysis(symbol: string) {
