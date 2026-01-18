@@ -1,33 +1,22 @@
-import express from "express";
+import { Router } from "express";
 import { analyzeOption } from "../services/option.service";
 
-const router = express.Router();
+const router = Router();
 
-/* ============================
-   ✅ HEALTH CHECK (CRITICAL)
-   ============================ */
-router.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    service: "option-api",
-    timestamp: new Date().toISOString(),
-  });
+// health check
+router.get("/health", (_req, res) => {
+  res.json({ status: "ok" });
 });
 
-/* ============================
-   📊 OPTION ANALYSIS
-   ============================ */
+// analysis route
 router.get("/analysis", async (req, res) => {
-  const symbol = (req.query.symbol as string) || "AAPL";
-
   try {
+    const symbol = (req.query.symbol as string) || "AAPL";
     const result = await analyzeOption(symbol);
-    res.status(200).json(result);
-  } catch (error) {
-    console.error("Option analysis error:", error);
-    res.status(500).json({
-      error: "Failed to analyze option",
-    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Analysis failed" });
   }
 });
 

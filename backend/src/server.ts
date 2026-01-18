@@ -8,19 +8,19 @@ dotenv.config();
 
 const app = express();
 
-/* ---------- MIDDLEWARE ---------- */
+// middlewares
 app.use(cors());
 app.use(express.json());
 
-/* ---------- ROOT TEST ---------- */
-app.get("/", (req, res) => {
-  res.send("Backend is running");
+// health check (VERY IMPORTANT)
+app.get("/", (_req, res) => {
+  res.send("Capital Cortex Backend Running");
 });
 
-/* ---------- API ROUTES ---------- */
+// routes
 app.use("/api/option", optionRoutes);
 
-/* ---------- PORT (CRITICAL) ---------- */
+// PORT — Railway injects this
 const PORT = Number(process.env.PORT) || 4000;
 
 app.listen(PORT, "0.0.0.0", () => {
