@@ -1,15 +1,14 @@
 export interface OptionAnalysis {
   symbol: string
-  underlyingPrice: string
-  volatility: string
-  price: number
+  underlyingPrice: string   // from backend: S.toFixed(2)
+  volatility: string        // annualised vol as string
+  price: number             // Black-Scholes call price
   delta: number
   theta: number
   vega: number
 }
 
-const API_URL = import.meta.env.VITE_API_URL ;
-
+const API_URL = import.meta.env.VITE_API_URL
 
 export async function fetchOptionAnalysis(symbol: string) {
   const res = await fetch(

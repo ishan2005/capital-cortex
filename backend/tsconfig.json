@@ -2,14 +2,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "rootDir": "src",
     "outDir": "dist",
-    "moduleResolution": "node",
+    "rootDir": "src",
+    "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "skipLibCheck": true,
-    "types": ["node"]
-  },
-  "include": ["src"]
+    "skipLibCheck": true
+  }
 }
